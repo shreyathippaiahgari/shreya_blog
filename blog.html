@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shreya's Blog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    header {
+      background-color: #ff6b81;
+      color: white;
+      text-align: center;
+      padding: 1em;
+      border-bottom: 4px solid #d63031;
+    }
+
+    header img {
+      max-width: 150px;
+      height: auto;
+      border-radius: 50%;
+      margin-left: 20px;
+    }
+
+    .section-button {
+      background-color: #dcdde1;
+      border: none;
+      color: #2d3436;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 16px;
+      margin: 10px auto;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .section-button:hover {
+      background-color: #2d3436;
+      color: white;
+    }
+
+    section {
+      margin: 20px;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    h2 {
+      color: #2d3436;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .like-button {
+      background-color: #ff6b81;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .like-button:hover {
+      background-color: #d63031;
+    }
+
+    .like-count {
+      font-weight: bold;
+      margin-left: 5px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Shreya's Blog</h1>
+  <img src="C:\Users\rames\Downloads\shreya.jpeg" alt="Shreya">
+</header>
+
+<button class="section-button" onclick="toggleSection('objective')">Objectives</button>
+
+<section id="objective">
+  <h2>Objective</h2>
+  <p>To have a successful career in an esteemed and leading organization, utilizing my skills and smart working capability for its advancement and at the same time fostering my growth, both professionally and personally.</p>
+  <button class="like-button" onclick="like('objective')">Like</button>
+  <span id="objective-likes" class="like-count">0</span>
+</section>
+
+<button class="section-button" onclick="toggleSection('education')">Education</button>
+
+<section id="education">
+  <h2>Educational Qualification</h2>
+  <p>I completed my SSC in the year of 2019 with a percentage of 92% in Sree Vinayasree Vidyanikethan School.</p>
+  <p>I completed my Intermediate in the year 2021 with a percentage of 84% in Vishra Junior Kalasala.</p>
+  <p>Currently, I'm pursuing BTech 3rd year with the group of CSE (AIML) in Mallareddy College.</p>
+  <button class="like-button" onclick="like('education')">Like</button>
+  <span id="education-likes" class="like-count">0</span>
+</section>
+
+<button class="section-button" onclick="toggleSection('achievements')">Achievements</button>
+
+<section id="achievements">
+  <h2>Achievements</h2>
+  <p>I completed an internship on artificial intelligence.</p>
+  <p>Completed a workshop on AI tools.</p>
+  <p>Completed an internship on testing.</p>
+  <button class="like-button" onclick="like('achievements')">Like</button>
+  <span id="achievements-likes" class="like-count">0</span>
+</section>
+
+<button class="section-button" onclick="toggleSection('strengths')">Strengths</button>
+
+<section id="strengths">
+  <h2>Strengths</h2>
+  <p>Proactive</p>
+  <p>Team player</p>
+  <p>Effective communication</p>
+  <p>Time management</p>
+  <p>Problem-solving</p>
+  <button class="like-button" onclick="like('strengths')">Like</button>
+  <span id="strengths-likes" class="like-count">0</span>
+</section>
+
+<button class="section-button" onclick="toggleSection('technical-skills')">Technical Skills</button>
+
+<section id="technical-skills">
+  <h2>Technical Skills</h2>
+  <p>HTML</p>
+  <p>CSS</p>
+  <p>JavaScript</p>
+  <p>Python</p>
+  <button class="like-button" onclick="like('technical-skills')">Like</button>
+  <span id="technical-skills-likes" class="like-count">0</span>
+</section>
+
+<button class="section-button" onclick="toggleSection('personal-info')">Personal Information</button>
+
+<section id="personal-info">
+  <h2>Personal Information</h2>
+  <p>Name: Shreya</p>
+  <p>Date of Birth: 29/10/2004</p>
+  <p>Address: Church Street, Ananthapuram, Andhra Pradesh</p>
+  <button class="like-button" onclick="like('personal-info')">Like</button>
+  <span id="personal-info-likes" class="like-count">0</span>
+</section>
+
+<script>
+  var likes = {
+    'objective': 0,
+    'education': 0,
+    'achievements': 0,
+    'strengths': 0,
+    'technical-skills': 0,
+    'personal-info': 0
+  };
+
+  function like(section) {
+    likes[section]++;
+    document.getElementById(section + '-likes').textContent = likes[section];
+  }
+
+  function toggleSection(sectionId) {
+    var section = document.getElementById(sectionId);
+    var sections = document.querySelectorAll('section');
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].id !== sectionId) {
+        sections[i].style.display = 'none';
+      }
+    }
+    section.style.display = (section.style.display === 'none') ? 'block' : 'none';
+  }
+
+  window.onload = function() {
+    console.log('Window loaded');
+  };
+
+  window.addEventListener('resize', function() {
+    console.log('Window resized');
+  });
+
+  window.addEventListener('scroll', function() {
+    console.log('Window scrolled');
+  });
+
+</script>
+
+</body>
+</html>
